@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare two Strings</title>
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body {
+            background: rgba(0, 128, 0, 0.35);
+        }
+        .title {
+            text-align: center;
+            font-size: 4rem;
+        }
+        .wrapper {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto 1fr;
+            grid-column-gap: 10px;
+            height: 100vh;
+            width: 100%;
+        }
+        .wrapper__input-1 {
+            border: 1px solid black;
+            height: 50vh;
+        }
+        .wrapper__input-2 {
+            border: 1px solid black;
+            height: 50vh;
+        }
+        .button-container {
+            height: 50vh;
+            grid-column: 1 / 3;
+        }
+        .button {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .button__check {
+            position: absolute;
+            padding: 1rem;
+            left: 50%;
+            background: blue;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transform: translate(-50%, 50%);
+        }
+        textarea {
+            width: 100%;
+            height: 100%;
+        }
+        .modal-window {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.25);
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+            box-shadow: 2px 0 1px rgba(0, 0, 0, .5);
+        }
+        .modal-window > div {
+             width: 400px;
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%);
+             padding: 2em;
+             background: #ffffff;
+             color: #333333;
+         }
+    </style>
+</head>
+<body>
+<section>
+    <h1 class="title">Check if two strings are the same!</h1>
+    <div class="wrapper">
+        <section class="wrapper__input-1">
+            <textarea name="input-1" id="input-1"></textarea>
+        </section>
+        <section class="wrapper__input-2">
+            <textarea name="input-2" id="input-2"></textarea>
+        </section>
+        <section class="button-container">
+            <div class="button">
+                <div class="button__check" id="js-check">
+                    Check
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="open-modal" class="modal-window">
+        <div>
+            <a href="#" title="Close" class="modal-close">Close</a>
+            <h1>Voilà!</h1>
+            <p class="modal-text"></p>
+        </div>
+    </div>
+</section>
+<script>
+    const checkButton = window.document.getElementById('js-check');
+    const input1 = window.document.getElementById('input-1');
+    const input2 = window.document.getElementById('input-2');
+    const modalWindow = window.document.querySelector('.modal-window');
+    const modalClose = window.document.querySelector('.modal-close');
+    const modalText = window.document.querySelector('.modal-text');
+
+    const checkStrings = (event) => {
+    	console.log(event);
+    	modalWindow.style.opacity = '1';
+
+        if (event.target && event.target.id === 'js-check') {
+	        if (input1.value === input2.value) {
+                modalText.innerText = 'Your string are the same!!';
+	        } else {
+		        modalText.innerText = 'You string are not the same!!';
+	        }
+        }
+    };
+    modalClose.addEventListener('click', () => {
+	    modalWindow.style.opacity = '0';
+    }, false);
+    checkButton.addEventListener('click', checkStrings, false);
+</script>
+</body>
+</html>

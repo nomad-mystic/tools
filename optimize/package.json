@@ -1,0 +1,21 @@
+{
+  "name": "optimize",
+  "version": "1.0.0",
+  "description": "This will optimize files with Gulp ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Keith Murphy",
+  "license": "ISC",
+  "devDependencies": {
+    "colors": "^1.3.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-uglify": "^3.0.1",
+    "lodash": "^4.17.11",
+    "uglify-js": "^3.4.9",
+    "yargs": "^12.0.2"
+  },
+  "dependencies": {}
+}
